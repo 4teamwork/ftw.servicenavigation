@@ -1,3 +1,6 @@
+from ftw.builder.testing import BUILDER_LAYER
+from ftw.builder.testing import functional_session_factory
+from ftw.builder.testing import set_builder_session_factory
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import PLONE_FIXTURE
@@ -6,7 +9,7 @@ from zope.configuration import xmlconfig
 
 
 class ServicenavigationLayer(PloneSandboxLayer):
-    defaultBases = (PLONE_FIXTURE, )
+    defaultBases = (PLONE_FIXTURE, BUILDER_LAYER, )
 
     def setUpZope(self, app, configurationContext):
         xmlconfig.string(
@@ -26,6 +29,9 @@ class ServicenavigationLayer(PloneSandboxLayer):
 
 SERVICENAVIGATION_FIXTURE = ServicenavigationLayer()
 SERVICENAVIGATION_FUNCTIONAL = FunctionalTesting(
-    bases=(SERVICENAVIGATION_FIXTURE, ),
-    name='ftw.servicenavigation:functional'
+    bases=(
+        SERVICENAVIGATION_FIXTURE,
+        set_builder_session_factory(functional_session_factory),
+    ),
+    name='ftw.servicenavigation:functional',
 )

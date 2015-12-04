@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone"
+      metal:use-macro="context/main_template/macros/master">
+
+    <head>
+        <metal:block fill-slot="top_slot"
+                     tal:define="dummy python:request.set('disable_border',1);
+                                 dummy python:request.set('disable_plone.leftcolumn', 1);
+                                 dummy python:request.set('disable_plone.rightcolumn', 1);
+                                 " />
+
+        <metal:styleslot fill-slot="javascript_head_slot">
+            <script type="text/javascript">
+                $(function() {
+                    function fontAwesomeIcons(state){
+                        if (!state.id) { return state.text; }
+                            var template = $("<span class='fa-icon fa-" + state.element.value + "'></span><span>"+ state.text + "</span>");
+                            return template;
+                        }
+
+                    var initIconSelection = function(){
+                        var element = $(".datagridwidget-body tr:not(.datagridwidget-empty-row) select.select-widget");
+
+                        element.select2({
+                            width: "100%",
+                            templateResult: fontAwesomeIcons,
+                            templateSelection: fontAwesomeIcons
+                        });
+
+                        // Never use inline validation
+                        $(".z3cformInlineValidation").removeClass("z3cformInlineValidation");
+                    }
+
+                    initIconSelection();
+
+                    $(document).on("change", ".datagridwidget-body", initIconSelection);
+                });
+            </script>
+        </metal:styleslot>
+    </head>
+
+    <body>
+
+        <metal:block fill-slot="main">
+            <metal:block use-macro="context/@@ploneform-macros/form" />
+        </metal:block>
+
+    </body>
+</html>
