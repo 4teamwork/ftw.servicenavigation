@@ -47,6 +47,7 @@ setup(
         'collective.z3cform.datagridfield',
         'plone.api',
         'plone.formwidget.contenttree',
+        'plone.app.relationfield',
         'setuptools',
         'z3c.relationfield',
     ],
