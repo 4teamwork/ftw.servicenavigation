@@ -1,5 +1,4 @@
 from Acquisition import aq_base
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.z3cform.datagridfield import DataGridFieldFactory
 from datetime import datetime
 from ftw.servicenavigation import _
@@ -7,7 +6,9 @@ from path import Path
 from persistent.list import PersistentList
 from persistent.mapping import PersistentMapping
 from plone.directives import form
+from plone.formwidget.contenttree import ContentTreeFieldWidget
 from plone.formwidget.contenttree import PathSourceBinder
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from z3c.relationfield import RelationChoice
 from z3c.relationfield import RelationValue
 from zope import schema
@@ -66,6 +67,7 @@ class IServiceNavigationSchemaGrid(form.Schema):
         required=False,
     )
 
+    form.widget('internal_link', ContentTreeFieldWidget)
     internal_link = RelationChoice(
         title=_(u'label_internal_link', default=u'Internal link'),
         source=PathSourceBinder(),
@@ -141,9 +143,19 @@ class ServiceLinksRow(object):
         if name == 'storage':
             return object.__getattr__(self, name)
         value = self.storage.get(name)
+
+        # Without plone.app.relationfield this *hack* would not be necessary.
+        # Check https://github.com/plone/plone.app.relationfield/blob/1.2.1/plone/app/relationfield/widget.zcml
+        # It changes how the widget behaves with stored values.
+        # With plone.app.relationfield a RelationValue is needed, whithout the
+        # Path if you're using the PathSourceBinder.
+
+        # Start hack
         if value and name == 'internal_link':
             obj = getSite().unrestrictedTraverse(value.lstrip('/'))
             value = create_relation_for(obj)
+        # End hack
+
         return value
 
 
