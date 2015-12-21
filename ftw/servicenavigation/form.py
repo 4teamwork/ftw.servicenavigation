@@ -164,6 +164,7 @@ class ServiceNavigationForm(form.SchemaEditForm):
 
     schema = IServiceNavigationSchema
     ignoreContext = False
+    name = "service-edit-form"
 
     label = _(u'label_service_navigation', default=u'Service navigation')
 
