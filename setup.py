@@ -4,7 +4,9 @@ import os
 version = '1.1.0.dev0'
 
 tests_require = [
+    'ftw.builder',
     'ftw.testing',
+    'ftw.testbrowser',
     'plone.app.testing',
 ]
 
@@ -41,7 +43,13 @@ setup(
 
     install_requires=[
         'Plone',
+        'PyYAML',
+        'collective.z3cform.datagridfield',
+        'plone.api',
+        'plone.formwidget.contenttree',
+        'plone.app.relationfield',
         'setuptools',
+        'z3c.relationfield',
     ],
     tests_require=tests_require,
     extras_require=dict(tests=tests_require),
