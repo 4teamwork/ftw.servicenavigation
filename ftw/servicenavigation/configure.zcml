@@ -11,6 +11,8 @@
     <include file="lawgiver.zcml" zcml:condition="installed ftw.lawgiver" />
     <include file="permissions.zcml"/>
 
+    <browser:resourceDirectory name="servicenavigation" directory="resources" />
+
     <browser:page
         name="service_navigation_form"
         for="plone.app.layout.navigation.interfaces.INavigationRoot"

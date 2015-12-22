@@ -23,7 +23,7 @@
                 <a tal:attributes="href view/edit_url"
                    class="fa-icon fa-pencil-square-o ModifyServiceNavigation"
                    i18n:attributes="title label_modify_service_navigation"
-                   title="Modify service navigation" />
+                   title="Modify service navigation">Edit</a>
             </li>
         </ul>
 
