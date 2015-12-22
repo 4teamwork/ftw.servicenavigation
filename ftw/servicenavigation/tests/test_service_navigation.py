@@ -141,3 +141,38 @@ class TestServiceNavigation(FunctionalTestCase):
     @browsing
     def test_modify_link_not_on_other_content(self, browser):
         self.assert_edit_link(self.folder, False)
+
+    @browsing
+    def test_configuration_form_in_browser(self, browser):
+        browser.login().open()
+
+        # Create a service navigation through the configuration form.
+        browser.find('Edit').click()
+        browser.fill({
+            'Service links': [
+                {
+                    'Label': u'Internal link',
+                    'Internal link': self.folder,
+                    'Icon': u'Music'
+                },
+                {
+                    'Label': u'External link',
+                    'External URL': u'http://www.4teamwork.ch',
+                    'Icon': u'Heart'
+                },
+            ]
+        }).save()
+        self.assertEqual(
+            'http://nohost/plone/a-folder',
+            browser.find('Internal link').attrib['href'],
+        )
+        self.assertEqual(
+            'http://www.4teamwork.ch',
+            browser.find('External link').attrib['href'],
+        )
+
+        # Disable the service navigation
+        browser.find('Edit').click()
+        browser.fill({'Disable service links': True}).save()
+        self.assertIsNone(browser.find('Internal link'))
+        self.assertIsNone(browser.find('External link'))
