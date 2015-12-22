@@ -17,6 +17,7 @@ class ServicenavigationLayer(PloneSandboxLayer):
             '  <include package="z3c.autoinclude" file="meta.zcml" />'
             '  <includePlugins package="plone" />'
             '  <includePluginsOverrides package="plone" />'
+            '  <include package="plone.app.relationfield" />'
             '</configure>',
             context=configurationContext)
 
