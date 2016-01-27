@@ -1,0 +1,16 @@
+#service-navigation {
+  display: none;
+
+  @include screen-large {
+    display: block;
+    float: right;
+  }
+
+  ul {
+    @include list-horizontal;
+
+    a {
+      @include auto-text-color($color-primary);
+    }
+  }
+}
