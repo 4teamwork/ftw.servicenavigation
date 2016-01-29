@@ -1,16 +1,18 @@
 #service-navigation {
+
+  float: right;
+  > ul {
+    @include list-horizontal();
+    > li > a {
+      @include no-link();
+      @include auto-link-color();
+    }
+  }
+
   display: none;
 
   @include screen-large {
     display: block;
-    float: right;
   }
 
-  ul {
-    @include list-horizontal;
-
-    a {
-      @include auto-text-color($color-primary);
-    }
-  }
 }
