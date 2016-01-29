@@ -70,7 +70,10 @@ class ServiceNavigation(ViewletBase):
         return storage, nav_root
 
     def can_modify(self):
-        if not INavigationRoot.providedBy(self.context):
+        context_state = self.context.restrictedTraverse(
+            '@@plone_context_state'
+        )
+        if not INavigationRoot.providedBy(context_state.canonical_object()):
             return False
 
         return api.user.has_permission(

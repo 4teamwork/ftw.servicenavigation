@@ -139,6 +139,17 @@ class TestServiceNavigation(FunctionalTestCase):
         self.assert_edit_link(subsite, True)
 
     @browsing
+    def test_modify_link_on_plone_site_having_default_page(self, browser):
+        """
+        This test makes sure that the edit link is shown on plone sites (root)
+        having a default page.
+        """
+        folder = create(Builder('folder').titled(u'My Folder'))
+        self.portal._setProperty('default_page', folder.getId(), 'string')
+        transaction.commit()
+        self.assert_edit_link(self.portal, True)
+
+    @browsing
     def test_modify_link_not_on_other_content(self, browser):
         self.assert_edit_link(self.folder, False)
 
