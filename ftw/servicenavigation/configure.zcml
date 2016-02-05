@@ -11,6 +11,7 @@
     <include file="profiles.zcml"/>
     <include file="lawgiver.zcml" zcml:condition="installed ftw.lawgiver" />
     <include file="permissions.zcml"/>
+    <include file="upgrades.zcml"/>
 
     <browser:resourceDirectory name="servicenavigation" directory="resources" />
 
@@ -45,6 +46,5 @@
           profile="ftw.servicenavigation:default"
           />
     </configure>
-
 
 </configure>
