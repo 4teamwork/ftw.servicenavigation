@@ -45,6 +45,7 @@ setup(
         'Plone',
         'PyYAML',
         'collective.z3cform.datagridfield',
+        'ftw.upgrade',
         'plone.api',
         'plone.formwidget.contenttree',
         'plone.app.relationfield',
