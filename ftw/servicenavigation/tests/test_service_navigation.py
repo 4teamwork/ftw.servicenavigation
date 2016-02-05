@@ -52,14 +52,12 @@ class TestServiceNavigation(FunctionalTestCase):
 
         external_link = browser.css(self.css_selector).first
         self.assertEquals('External Link', external_link.text)
-        self.assertEquals('External Link', external_link.attrib['title'])
         self.assertEquals('fa-icon fa-heart', external_link.attrib['class'])
         self.assertEquals('http://www.4teamwork.ch',
                           external_link.attrib['href'])
 
         internal_link = browser.css(self.css_selector)[1]
         self.assertEquals('Internal Link', internal_link.text)
-        self.assertEquals('Internal Link', internal_link.attrib['title'])
         self.assertEquals('fa-icon fa-glass', internal_link.attrib['class'])
         self.assertEquals(self.folder.absolute_url(),
                           internal_link.attrib['href'])
