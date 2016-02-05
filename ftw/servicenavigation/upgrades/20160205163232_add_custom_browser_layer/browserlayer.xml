@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layers>
+
+    <layer name="ftw_servicenavigation"
+           interface="ftw.servicenavigation.interfaces.IFtwServicenavigation"
+    />
+
+</layers>
