@@ -47,5 +47,8 @@
           />
     </configure>
 
+    <configure zcml:condition="installed ftw.mobile">
+        <adapter factory=".mobile_button.ServiceNavigationButton" name="servicenavigation-mobile-button" />
+    </configure>
 
 </configure>
