@@ -16,3 +16,10 @@
   }
 
 }
+
+
+.ftw-mobile-buttons {
+  #servicenavigation-mobile-button a {
+    @extend .fa-info;
+  }
+}

@@ -8,6 +8,7 @@ tests_require = [
     'ftw.testing',
     'ftw.testbrowser',
     'plone.app.testing',
+    'ftw.mobile'
 ]
 
 
