@@ -1,7 +1,6 @@
 from ftw.mobile.buttons import BaseButton
 from ftw.servicenavigation import _
 from ftw.servicenavigation.viewlet import ServiceNavigation
-import json
 
 
 class ServiceNavigationButton(BaseButton):
@@ -15,4 +14,4 @@ class ServiceNavigationButton(BaseButton):
     def data(self):
         viewlet = ServiceNavigation(self.context, self.request, None, None)
         links = viewlet.get_service_links()
-        return json.dumps(links)
+        return links
