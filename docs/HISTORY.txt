@@ -5,6 +5,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Implement uninstall profile. [jone]
+
 - Implement ftw.mobile button.
   [mathias.leimgruber]
 

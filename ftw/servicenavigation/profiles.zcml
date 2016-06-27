@@ -18,5 +18,12 @@
         directory="upgrades"
         />
 
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="ftw.servicenavigation : uninstall"
+        directory="profiles/uninstall"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+        />
 
 </configure>
