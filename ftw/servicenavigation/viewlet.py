@@ -31,10 +31,12 @@ class ServiceNavigation(ViewletBase):
             return []
 
         for link in storage.get('links', []):
-            links.append(
-                dict(label=link['label'],
-                     icon=link['icon'],
-                     url=self.get_link(link)))
+            link_url = self.get_link(link)
+            if link_url:
+                links.append(
+                    dict(label=link['label'],
+                         icon=link['icon'],
+                         url=link_url))
 
         return links
 
@@ -43,8 +45,11 @@ class ServiceNavigation(ViewletBase):
         external_link = link['external_url']
 
         if internal_link:
-            internal_link = api.portal.get().unrestrictedTraverse(
-                internal_link.lstrip('/'))
+            try:
+                internal_link = api.portal.get().unrestrictedTraverse(
+                    internal_link.lstrip('/'))
+            except KeyError:
+                internal_link = None
             if internal_link:
                 internal_link = internal_link.absolute_url()
 
