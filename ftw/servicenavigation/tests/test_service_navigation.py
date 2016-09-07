@@ -185,3 +185,17 @@ class TestServiceNavigation(FunctionalTestCase):
         browser.fill({'Disable service links': True}).save()
         self.assertIsNone(browser.find('Internal link'))
         self.assertIsNone(browser.find('External link'))
+
+    @browsing
+    def test_link_to_non_existent_object_is_not_displayed(self, browser):
+        self.set_links(self.portal)
+        self.portal.manage_delObjects(self.portal.get('a-folder').id)
+        transaction.commit()
+
+        browser.login().visit(self.portal, view='service_navigation_form')
+        browser.find_form_by_fields('Disable service links').submit()
+
+        self.assertEqual(
+            [item.text for item in browser.css(
+                '#service-navigation ul li a:not(.ModifyServiceNavigation)')],
+            ['External Link'])

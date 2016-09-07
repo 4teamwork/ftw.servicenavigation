@@ -152,8 +152,11 @@ class ServiceLinksRow(object):
 
         # Start hack
         if value and name == 'internal_link':
-            obj = getSite().unrestrictedTraverse(value.lstrip('/'))
-            value = create_relation_for(obj)
+            try:
+                obj = getSite().unrestrictedTraverse(value.lstrip('/'))
+                value = create_relation_for(obj)
+            except KeyError:
+                value = None
         # End hack
 
         return value
