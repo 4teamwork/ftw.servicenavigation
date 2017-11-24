@@ -37,6 +37,14 @@ Further this packages ships with select2 (Version 4.0.0) for the Icons list.
 If you have already select2 installed, that's fine it will not be loaded again.
 
 
+Notes
+=====
+
+"collective.z3cform.datagridfield" 1.3.0 has some issues causing JavaScript errors when
+trying to add or remove rows from the data grid. Please use "collective.z3cform.datagridfield" 1.2
+until the bugs have been fixed in "collective.z3cform.datagridfield".
+
+
 Links
 =====
 
