@@ -5,10 +5,16 @@ from ftw.servicenavigation import _
 from path import Path
 from persistent.list import PersistentList
 from persistent.mapping import PersistentMapping
-from plone.directives import form
+from plone.autoform import directives
+from plone.autoform.form import AutoExtensibleForm
 from plone.formwidget.contenttree import ContentTreeFieldWidget
 from plone.formwidget.contenttree import PathSourceBinder
+from plone.supermodel import model
+from Products.CMFPlone import PloneMessageFactory as pmf
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.statusmessages.interfaces import IStatusMessage
+from z3c.form import button
+from z3c.form.form import EditForm
 from z3c.relationfield import RelationChoice
 from z3c.relationfield import RelationValue
 from zope import schema
@@ -49,7 +55,7 @@ def icons(context):
 alsoProvides(icons, IContextSourceBinder)
 
 
-class IServiceNavigationSchemaGrid(form.Schema):
+class IServiceNavigationSchemaGrid(model.Schema):
 
     label = schema.TextLine(
         title=_(u'Label'),
@@ -67,7 +73,7 @@ class IServiceNavigationSchemaGrid(form.Schema):
         required=False,
     )
 
-    form.widget('internal_link', ContentTreeFieldWidget)
+    directives.widget('internal_link', ContentTreeFieldWidget)
     internal_link = RelationChoice(
         title=_(u'label_internal_link', default=u'Internal link'),
         source=PathSourceBinder(),
@@ -75,8 +81,8 @@ class IServiceNavigationSchemaGrid(form.Schema):
     )
 
 
-class IServiceNavigationSchema(form.Schema):
-    form.widget('links', DataGridFieldFactory, allow_reorder=True)
+class IServiceNavigationSchema(model.Schema):
+    directives.widget('links', DataGridFieldFactory, allow_reorder=True)
     links = schema.List(
         title=_(u'label_service_links', default=u'Service links'),
         value_type=schema.Object(
@@ -94,7 +100,7 @@ class IServiceNavigationSchema(form.Schema):
         missing_value=False,
     )
 
-    form.mode(modified='hidden')
+    directives.mode(modified='hidden')
     modified = schema.Bool(
         title=u'modified_marker',
         required=False,
@@ -162,7 +168,7 @@ class ServiceLinksRow(object):
         return value
 
 
-class ServiceNavigationForm(form.SchemaEditForm):
+class ServiceNavigationForm(AutoExtensibleForm, EditForm):
     template = ViewPageTemplateFile('templates/form.pt')
 
     schema = IServiceNavigationSchema
@@ -170,6 +176,30 @@ class ServiceNavigationForm(form.SchemaEditForm):
     name = "service-edit-form"
 
     label = _(u'label_service_navigation', default=u'Service navigation')
+
+    @button.buttonAndHandler(pmf(u'Save'), name='save')
+    def handleApply(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        self.applyChanges(data)
+        IStatusMessage(self.request).addStatusMessage(
+            pmf(u"Changes saved"),
+        )
+        self.request.response.redirect(self.context.absolute_url())
+
+    @button.buttonAndHandler(pmf(u'Cancel'), name='cancel')
+    def handleCancel(self, action):
+        IStatusMessage(self.request).addStatusMessage(
+            pmf(u"Edit cancelled"),
+        )
+        self.request.response.redirect(self.context.absolute_url())
+
+    def updateActions(self):
+        super(EditForm, self).updateActions()
+        self.actions["save"].addClass("context")
+        self.actions["cancel"].addClass("standalone")
 
     def getContent(self):
         annotations = IAnnotations(self.context)
