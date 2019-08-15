@@ -45,7 +45,7 @@ def create_relation_for(obj):
 
 
 def icons(context):
-    terms = []
+    terms = [SimpleVocabulary.createTerm('no-icon', 'no-icon', '-')]
 
     for icon in ICONS:
         terms.append(
