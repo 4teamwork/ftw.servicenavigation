@@ -80,6 +80,13 @@ class IServiceNavigationSchemaGrid(model.Schema):
         required=False,
     )
 
+    blank = schema.Bool(
+        title=_(u'label_blank', default=u'Open in new window'),
+        required=False,
+        default=False,
+        missing_value=False,
+    )
+
 
 class IServiceNavigationSchema(model.Schema):
     directives.widget('links', DataGridFieldFactory, allow_reorder=True)

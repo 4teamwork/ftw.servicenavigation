@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-11-24 09:25+0000\n"
+"POT-Creation-Date: 2019-08-19 12:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,8 +38,13 @@ msgstr ""
 msgid "ftw.servicenavigation : uninstall"
 msgstr ""
 
+#. Default: "Open in new window"
+#: ./ftw/servicenavigation/form.py:84
+msgid "label_blank"
+msgstr ""
+
 #. Default: "Disable service links"
-#: ./ftw/servicenavigation/form.py:97
+#: ./ftw/servicenavigation/form.py:104
 msgid "label_disable_service_links"
 msgstr "Déactiver les liens de service"
 
@@ -59,17 +64,17 @@ msgid "label_internal_link"
 msgstr "Lien interne"
 
 #. Default: "Modify service navigation"
-#: ./ftw/servicenavigation/templates/viewlet.pt:22
+#: ./ftw/servicenavigation/templates/viewlet.pt:23
 msgid "label_modify_service_navigation"
 msgstr "Modifier la navigation de service"
 
 #. Default: "Service links"
-#: ./ftw/servicenavigation/form.py:87
+#: ./ftw/servicenavigation/form.py:94
 msgid "label_service_links"
 msgstr "Liens de service"
 
 #. Default: "Service navigation"
-#: ./ftw/servicenavigation/form.py:178
+#: ./ftw/servicenavigation/form.py:185
 msgid "label_service_navigation"
 msgstr "Navigation de service"
 
