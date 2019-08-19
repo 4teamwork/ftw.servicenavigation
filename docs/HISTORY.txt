@@ -5,6 +5,7 @@ Changelog
 1.1.4 (unreleased)
 ------------------
 
+- Validate that there is either an external or an internal link but not both. [elioschmutz]
 - Extend the form to define the _blank attribute for each link. [elioschmutz]
 
 

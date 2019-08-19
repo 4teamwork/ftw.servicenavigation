@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-19 12:31+0000\n"
+"POT-Creation-Date: 2019-08-19 12:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 msgid "Install ftw.servicenavigation"
 msgstr ""
 
-#: ./ftw/servicenavigation/form.py:61
+#: ./ftw/servicenavigation/form.py:63
 msgid "Label"
 msgstr "Label"
 
@@ -27,6 +27,11 @@ msgstr ""
 msgid "Service navigation"
 msgstr "Servicenavigation"
 
+#. Default: "Choose between an external or an internal link."
+#: ./ftw/servicenavigation/form.py:95
+msgid "error_link_validator"
+msgstr "Pro Zeile darf nur ein externer oder ein interner Link angegeben werden. Beides ist nicht erlaubt."
+
 #: ./ftw/servicenavigation/profiles.zcml:13
 msgid "ftw.servicenavigation (default)"
 msgstr ""
@@ -36,27 +41,27 @@ msgid "ftw.servicenavigation : uninstall"
 msgstr ""
 
 #. Default: "Open in new window"
-#: ./ftw/servicenavigation/form.py:84
+#: ./ftw/servicenavigation/form.py:86
 msgid "label_blank"
 msgstr "In neuem Fenster öffnen?"
 
 #. Default: "Disable service links"
-#: ./ftw/servicenavigation/form.py:104
+#: ./ftw/servicenavigation/form.py:112
 msgid "label_disable_service_links"
 msgstr "Service-Links nicht anzeigen"
 
 #. Default: "External URL"
-#: ./ftw/servicenavigation/form.py:72
+#: ./ftw/servicenavigation/form.py:74
 msgid "label_external_url"
 msgstr "Externe URL"
 
 #. Default: "Icon"
-#: ./ftw/servicenavigation/form.py:66
+#: ./ftw/servicenavigation/form.py:68
 msgid "label_icon"
 msgstr "Icon"
 
 #. Default: "Internal link"
-#: ./ftw/servicenavigation/form.py:78
+#: ./ftw/servicenavigation/form.py:80
 msgid "label_internal_link"
 msgstr "Interner Link"
 
@@ -66,12 +71,12 @@ msgid "label_modify_service_navigation"
 msgstr "Service-Navigation bearbeiten"
 
 #. Default: "Service links"
-#: ./ftw/servicenavigation/form.py:94
+#: ./ftw/servicenavigation/form.py:102
 msgid "label_service_links"
 msgstr "Service-Links"
 
 #. Default: "Service navigation"
-#: ./ftw/servicenavigation/form.py:185
+#: ./ftw/servicenavigation/form.py:193
 msgid "label_service_navigation"
 msgstr "Service-Navigation"
 
