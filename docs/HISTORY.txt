@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.4 (unreleased)
+1.2.0 (2019-09-04)
 ------------------
 
 - Validate that there is either an external or an internal link but not both. [elioschmutz]
