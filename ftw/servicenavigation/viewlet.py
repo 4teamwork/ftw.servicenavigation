@@ -36,7 +36,8 @@ class ServiceNavigation(ViewletBase):
                 links.append(
                     dict(label=link['label'],
                          icon=link['icon'],
-                         url=link_url))
+                         url=link_url,
+                         target='_blank' if link.get('blank', False) else ''))
 
         return links
 

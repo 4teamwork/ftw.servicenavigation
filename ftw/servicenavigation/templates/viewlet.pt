@@ -13,7 +13,8 @@
             <tal:loop repeat="link links">
                 <li>
                     <a tal:attributes="class string:fa-icon fa-${link/icon};
-                                       href link/url"
+                                       href link/url;
+                                       target link/target"
                        tal:content="link/label" />
                 </li>
             </tal:loop>

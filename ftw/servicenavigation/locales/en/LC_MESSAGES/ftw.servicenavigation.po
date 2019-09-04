@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-11-24 09:25+0000\n"
+"POT-Creation-Date: 2019-08-19 12:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 msgid "Install ftw.servicenavigation"
 msgstr ""
 
-#: ./ftw/servicenavigation/form.py:61
+#: ./ftw/servicenavigation/form.py:63
 msgid "Label"
 msgstr ""
 
@@ -30,6 +30,11 @@ msgstr ""
 msgid "Service navigation"
 msgstr "Service navigation screen"
 
+#. Default: "Choose between an external or an internal link."
+#: ./ftw/servicenavigation/form.py:95
+msgid "error_link_validator"
+msgstr ""
+
 #: ./ftw/servicenavigation/profiles.zcml:13
 msgid "ftw.servicenavigation (default)"
 msgstr ""
@@ -38,38 +43,43 @@ msgstr ""
 msgid "ftw.servicenavigation : uninstall"
 msgstr ""
 
+#. Default: "Open in new window"
+#: ./ftw/servicenavigation/form.py:86
+msgid "label_blank"
+msgstr ""
+
 #. Default: "Disable service links"
-#: ./ftw/servicenavigation/form.py:97
+#: ./ftw/servicenavigation/form.py:112
 msgid "label_disable_service_links"
 msgstr ""
 
 #. Default: "External URL"
-#: ./ftw/servicenavigation/form.py:72
+#: ./ftw/servicenavigation/form.py:74
 msgid "label_external_url"
 msgstr ""
 
 #. Default: "Icon"
-#: ./ftw/servicenavigation/form.py:66
+#: ./ftw/servicenavigation/form.py:68
 msgid "label_icon"
 msgstr ""
 
 #. Default: "Internal link"
-#: ./ftw/servicenavigation/form.py:78
+#: ./ftw/servicenavigation/form.py:80
 msgid "label_internal_link"
 msgstr ""
 
 #. Default: "Modify service navigation"
-#: ./ftw/servicenavigation/templates/viewlet.pt:22
+#: ./ftw/servicenavigation/templates/viewlet.pt:23
 msgid "label_modify_service_navigation"
 msgstr ""
 
 #. Default: "Service links"
-#: ./ftw/servicenavigation/form.py:87
+#: ./ftw/servicenavigation/form.py:102
 msgid "label_service_links"
 msgstr ""
 
 #. Default: "Service navigation"
-#: ./ftw/servicenavigation/form.py:178
+#: ./ftw/servicenavigation/form.py:193
 msgid "label_service_navigation"
 msgstr ""
 

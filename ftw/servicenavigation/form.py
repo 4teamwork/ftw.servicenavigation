@@ -23,6 +23,8 @@ from zope.component import getUtility
 from zope.component.hooks import getSite
 from zope.interface import alsoProvides
 from zope.interface import implements
+from zope.interface import Invalid
+from zope.interface import invariant
 from zope.intid.interfaces import IIntIds
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
@@ -80,6 +82,13 @@ class IServiceNavigationSchemaGrid(model.Schema):
         required=False,
     )
 
+    blank = schema.Bool(
+        title=_(u'label_blank', default=u'Open in new window'),
+        required=False,
+        default=False,
+        missing_value=False,
+    )
+
 
 class IServiceNavigationSchema(model.Schema):
     directives.widget('links', DataGridFieldFactory, allow_reorder=True)
@@ -107,6 +116,13 @@ class IServiceNavigationSchema(model.Schema):
         default=True,
         missing_value=True,
     )
+
+    @invariant
+    def link_validator(data):
+        for link in data.links:
+            if link.get('internal_link', None) and link.get('external_url', None):
+                raise Invalid(_('error_link_validator',
+                                u'Choose between an external or an internal link.'))
 
 
 class ServiceNavigationConfig(object):
