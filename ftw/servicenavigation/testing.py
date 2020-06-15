@@ -1,10 +1,11 @@
 from ftw.builder.testing import BUILDER_LAYER
 from ftw.builder.testing import functional_session_factory
 from ftw.builder.testing import set_builder_session_factory
-from plone.app.testing import applyProfile
+from ftw.testing import IS_PLONE_5
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
+from plone.app.testing import applyProfile
 from plone.testing import z2
 from zope.configuration import xmlconfig
 
@@ -26,6 +27,8 @@ class ServicenavigationLayer(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'ftw.servicenavigation:default')
+        if IS_PLONE_5:
+            applyProfile(portal, 'plone.app.contenttypes:default')
 
     def tearDownZope(self, app):
         super(ServicenavigationLayer, self).tearDownZope(app)
