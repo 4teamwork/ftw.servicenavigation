@@ -2,11 +2,6 @@
 <object name="portal_css" meta_type="Stylesheets Registry">
 
     <stylesheet
-        id="++resource++collective.z3cform.datagridfield/datagridfield.css"
-        expression=""
-        />
-
-    <stylesheet
         id="++resource++servicenavigation/css/servicenavigation.css"
         remove="True"
         />
