@@ -2,7 +2,6 @@
     "name": "ftw.servicenavigation",
     "version": "1.0.0",
     "description": "Loader for the plone 5 resources.",
-    "main": "index.js",
     "repository": "git@github.com:4teamwork/ftw.servicenavigation.git",
     "author": "4teamwork AG <info@4teamwork.ch>",
     "license": "GPL2",
