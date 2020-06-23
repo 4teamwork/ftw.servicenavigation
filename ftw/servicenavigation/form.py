@@ -7,8 +7,9 @@ from persistent.list import PersistentList
 from persistent.mapping import PersistentMapping
 from plone.autoform import directives
 from plone.autoform.form import AutoExtensibleForm
-from plone.formwidget.contenttree import ContentTreeFieldWidget
-from plone.formwidget.contenttree import PathSourceBinder
+from ftw.referencewidget.selectable import DefaultSelectable
+from ftw.referencewidget.sources import ReferenceObjSourceBinder
+from ftw.referencewidget.widget import ReferenceWidgetFactory
 from plone.supermodel import model
 from Products.CMFPlone import PloneMessageFactory as pmf
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -75,10 +76,10 @@ class IServiceNavigationSchemaGrid(model.Schema):
         required=False,
     )
 
-    directives.widget('internal_link', ContentTreeFieldWidget)
+    directives.widget(internal_link=ReferenceWidgetFactory)
     internal_link = RelationChoice(
         title=_(u'label_internal_link', default=u'Internal link'),
-        source=PathSourceBinder(),
+        source=ReferenceObjSourceBinder(selectable_class=DefaultSelectable),
         required=False,
     )
 
