@@ -3,6 +3,5 @@
     <dependencies>
         <dependency>profile-collective.z3cform.datagridfield:default</dependency>
         <dependency>profile-plone.app.relationfield:default</dependency>
-        <dependency>profile-ftw.referencewidget:default</dependency>
     </dependencies>
 </metadata>

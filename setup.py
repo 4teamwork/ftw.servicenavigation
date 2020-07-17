@@ -54,7 +54,6 @@ setup(
         'plone.supermodel',
         'setuptools',
         'z3c.relationfield',
-        'ftw.referencewidget',
     ],
     tests_require=tests_require,
     extras_require=dict(tests=tests_require),
