@@ -7,15 +7,12 @@ from persistent.list import PersistentList
 from persistent.mapping import PersistentMapping
 from plone.autoform import directives
 from plone.autoform.form import AutoExtensibleForm
-from plone.formwidget.contenttree import ContentTreeFieldWidget
-from plone.formwidget.contenttree import PathSourceBinder
 from plone.supermodel import model
 from Products.CMFPlone import PloneMessageFactory as pmf
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import button
 from z3c.form.form import EditForm
-from z3c.relationfield import RelationChoice
 from z3c.relationfield import RelationValue
 from zope import schema
 from zope.annotation import IAnnotations
@@ -75,10 +72,8 @@ class IServiceNavigationSchemaGrid(model.Schema):
         required=False,
     )
 
-    directives.widget('internal_link', ContentTreeFieldWidget)
-    internal_link = RelationChoice(
+    internal_link = schema.TextLine(
         title=_(u'label_internal_link', default=u'Internal link'),
-        source=PathSourceBinder(),
         required=False,
     )
 

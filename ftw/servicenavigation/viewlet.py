@@ -7,6 +7,7 @@ from ftw.servicenavigation.form import ANNOTATION_KEY
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.viewlets import ViewletBase
+from plone.dexterity.utils import safe_utf8
 from plone.memoize import ram
 from zope.annotation import IAnnotations
 
@@ -48,7 +49,7 @@ class ServiceNavigation(ViewletBase):
         if internal_link:
             try:
                 internal_link = api.portal.get().unrestrictedTraverse(
-                    internal_link.lstrip('/'))
+                    safe_utf8(internal_link.lstrip('/')))
             except KeyError:
                 internal_link = None
             if internal_link:

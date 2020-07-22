@@ -161,7 +161,7 @@ class TestServiceNavigation(FunctionalTestCase):
             'Service links': [
                 {
                     'Label': u'Internal link',
-                    'Internal link': self.folder,
+                    'Internal link': '/a-folder',
                     'Icon': u'Music'
                 },
                 {
@@ -182,7 +182,21 @@ class TestServiceNavigation(FunctionalTestCase):
 
         # Disable the service navigation
         browser.find('Edit').click()
-        browser.fill({'Disable service links': True}).save()
+        browser.fill({
+            'Service links': [
+                {
+                    'Label': u'Internal link',
+                    'Internal link': '/a-folder',
+                    'Icon': u'Music'
+                },
+                {
+                    'Label': u'External link',
+                    'External URL': u'http://www.4teamwork.ch',
+                    'Icon': u'Heart'
+                },
+            ],
+            'Disable service links': True
+        }).save()
         self.assertIsNone(browser.find('Internal link'))
         self.assertIsNone(browser.find('External link'))
 
