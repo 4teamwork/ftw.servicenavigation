@@ -1,14 +1,20 @@
-require([
-  'jquery',
-], function($,){
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    require(['jquery'], factory);
+  } else {
+    // Browser globals
+    root.amdWeb = factory(root.jQuery);
+  }
+}(typeof self !== 'undefined' ? self : this, function ($) {
   $(document).ready(function() {
 
 
     function fontAwesomeIcons(state){
-        if (!state.id) { return state.text; }
+      if (!state.id) { return state.text; }
 
-        var template = $("<span class='fa-icon fa-" + state.element.value + "'></span><span>"+ state.text + "</span>");
-        return template;
+      var template = $("<span class='fa-icon fa-" + state.element.value + "'></span><span>"+ state.text + "</span>");
+      return template;
     }
 
 
@@ -16,9 +22,9 @@ require([
       var element = $(".datagridwidget-body tr:not(.datagridwidget-empty-row) select.select-widget");
 
       element.select2({
-          width: "100%",
-          templateResult: fontAwesomeIcons,
-          templateSelection: fontAwesomeIcons
+        width: "100%",
+        templateResult: fontAwesomeIcons,
+        templateSelection: fontAwesomeIcons
       });
 
       // Never use inline validation
@@ -44,5 +50,13 @@ require([
     }
 
 
+    $( ".select-widget, .datagridwidget-row" ).change(function() {
+      initIconSelection();
+    });
+    $( ".insert-row" ).click(function() {
+      initIconSelection();
+    });
+
+
   });
-});
+}));
