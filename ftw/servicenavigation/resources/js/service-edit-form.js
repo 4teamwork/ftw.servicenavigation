@@ -13,7 +13,10 @@
     function fontAwesomeIcons(state){
       if (!state.id) { return state.text; }
 
-      var template = $("<span class='fa-icon fa-" + state.element.value + "'></span><span>"+ state.text + "</span>");
+      // Plone 5 : Plone 4
+      var icon = state.element instanceof Array ? state.element[0].value : state.element.value;
+
+      var template = $("<span class='fa-icon fa-" + icon + "'></span><span>"+ state.text + "</span>");
       return template;
     }
 
@@ -23,8 +26,12 @@
 
       element.select2({
         width: "100%",
+        // Plone 4 with shipped with select2 4.0 by ourselves
         templateResult: fontAwesomeIcons,
-        templateSelection: fontAwesomeIcons
+        templateSelection: fontAwesomeIcons,
+        // Plone 5 shipped with select2 3.5.4 by plone
+        formatResult: fontAwesomeIcons,
+        formatSelection: fontAwesomeIcons,
       });
 
       // Never use inline validation
