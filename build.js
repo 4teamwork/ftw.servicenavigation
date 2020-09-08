@@ -4,5 +4,6 @@
         jquery: "empty:",
     },
     name: "main",
-    out: "./ftw/servicenavigation/resources/js/servicenavigation-compiled.js"
+    out: "./ftw/servicenavigation/resources/js/servicenavigation-compiled.js",
+    // optimize: 'none'
 })
