@@ -1,5 +1,5 @@
 from Acquisition import aq_base
-from collective.z3cform.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from datetime import datetime
 from ftw.servicenavigation import _
 from path import Path
